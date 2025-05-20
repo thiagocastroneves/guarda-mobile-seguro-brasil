@@ -1,9 +1,10 @@
 
+import { Helmet } from "react-helmet";
 import EmergencyButton from "@/components/EmergencyButton";
 import SecurityTipCard from "@/components/SecurityTipCard";
 import MapPlaceholder from "@/components/MapPlaceholder";
 import { Link } from "react-router-dom";
-import { ShieldCheck, Info, AlertTriangle } from "lucide-react";
+import { ShieldCheck, Info, AlertTriangle, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const securityTips = [
@@ -27,6 +28,10 @@ const securityTips = [
 const Home = () => {
   return (
     <div className="flex flex-col min-h-screen">
+      <Helmet>
+        <title>GuardaMobile - Proteção para seu celular</title>
+      </Helmet>
+      
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-brand-blue to-brand-blue-dark py-12 text-white">
@@ -67,8 +72,62 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Features Grid */}
+        <section className="py-12 bg-gray-50 dark:bg-gray-800/50">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl font-bold mb-8 text-center">Recursos</h2>
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              <Link to="/emergency" className="no-underline">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100 dark:border-gray-700 h-full">
+                  <div className="rounded-full bg-red-50 dark:bg-red-900/20 w-12 h-12 flex items-center justify-center mb-4">
+                    <AlertTriangle className="h-6 w-6 text-red-600 dark:text-red-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">Resposta a Emergências</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Fluxo guiado para situações de roubo ou perda com checklist de ações recomendadas.
+                  </p>
+                </div>
+              </Link>
+              
+              <Link to="/emergency" className="no-underline">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100 dark:border-gray-700 h-full">
+                  <div className="rounded-full bg-blue-50 dark:bg-blue-900/20 w-12 h-12 flex items-center justify-center mb-4">
+                    <MessageSquare className="h-6 w-6 text-brand-blue dark:text-blue-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">Assistente Virtual</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Chat para orientações personalizadas e respostas a dúvidas sobre segurança do seu dispositivo.
+                  </p>
+                </div>
+              </Link>
+              
+              <Link to="/profile" className="no-underline">
+                <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100 dark:border-gray-700 h-full">
+                  <div className="rounded-full bg-green-50 dark:bg-green-900/20 w-12 h-12 flex items-center justify-center mb-4">
+                    <Phone className="h-6 w-6 text-brand-green dark:text-green-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">Configuração do Dispositivo</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Registre informações do seu dispositivo como modelo e IMEI para facilitar o bloqueio em caso de emergência.
+                  </p>
+                </div>
+              </Link>
+              
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100 dark:border-gray-700 h-full">
+                <div className="rounded-full bg-purple-50 dark:bg-purple-900/20 w-12 h-12 flex items-center justify-center mb-4">
+                  <ShieldCheck className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Dicas Preventivas</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Orientações e melhores práticas para prevenir roubos e proteger seu smartphone.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Map Section */}
-        <section className="py-12 bg-gray-50">
+        <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-2xl font-bold mb-8 text-center">Localização do Dispositivo</h2>
@@ -87,13 +146,23 @@ const Home = () => {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-2xl font-bold mb-4">Comece agora mesmo</h2>
             <p className="mb-6">Registre-se gratuitamente e proteja seu dispositivo</p>
-            <Button 
-              size="lg" 
-              className="bg-white text-brand-green hover:bg-gray-100"
-              asChild
-            >
-              <Link to="/register">Criar Conta</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button 
+                size="lg" 
+                className="bg-white text-brand-green hover:bg-gray-100"
+                asChild
+              >
+                <Link to="/register">Criar Conta</Link>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white/20"
+                asChild
+              >
+                <Link to="/emergency">Ir para Emergência</Link>
+              </Button>
+            </div>
           </div>
         </section>
       </main>
