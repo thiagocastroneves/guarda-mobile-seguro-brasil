@@ -1,10 +1,9 @@
-
 import { Helmet } from "react-helmet";
 import EmergencyButton from "@/components/EmergencyButton";
 import SecurityTipCard from "@/components/SecurityTipCard";
 import MapPlaceholder from "@/components/MapPlaceholder";
 import { Link } from "react-router-dom";
-import { ShieldCheck, Info, AlertTriangle, MessageSquare } from "lucide-react";
+import { ShieldCheck, Info, AlertTriangle, MessageSquare, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const securityTips = [

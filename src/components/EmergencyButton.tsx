@@ -1,34 +1,25 @@
-
-import { useState } from 'react';
-import { AlertTriangle } from 'lucide-react';
-import EmergencyDialog from './EmergencyDialog';
+import { Button } from "@/components/ui/button";
+import { AlertTriangle } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface EmergencyButtonProps {
-  text?: string;
   className?: string;
 }
 
-const EmergencyButton = ({ 
-  text = "EMERGÊNCIA", 
-  className = "" 
-}: EmergencyButtonProps) => {
-  const [dialogOpen, setDialogOpen] = useState(false);
-
+const EmergencyButton = ({ className }: EmergencyButtonProps) => {
   return (
-    <>
-      <button
-        onClick={() => setDialogOpen(true)}
-        className={`emergency-button bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-colors flex items-center justify-center ${className}`}
-      >
-        <AlertTriangle className="mr-2 h-6 w-6" />
-        {text}
-      </button>
-      
-      <EmergencyDialog 
-        open={dialogOpen} 
-        onClose={() => setDialogOpen(false)} 
-      />
-    </>
+    <Button
+      variant="destructive"
+      size="lg"
+      className={className}
+      data-tour="emergency-button"
+      asChild
+    >
+      <Link to="/emergency">
+        <AlertTriangle className="mr-2 h-5 w-5" />
+        Modo de Emergência
+      </Link>
+    </Button>
   );
 };
 
